@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Checkbox from '@/components/Checkbox.vue';
 import GuestLayout from '@/layouts/GuestLayout.vue';
 import InputError from '@/components/InputError.vue';
-import InputLabel from '@/components/InputLabel.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
-import TextInput from '@/components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
+import Label from '@/components/ui/label/Label.vue';
+import Button from '@/components/ui/button/Button.vue';
+import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
+import Input from '@/components/ui/input/Input.vue';
 
 defineProps<{
     canResetPassword?: boolean;
@@ -38,9 +38,9 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <Label for="email">Email</Label>
 
-                <TextInput
+                <Input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -54,9 +54,9 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <Label for="password">Password</Label>
 
-                <TextInput
+                <Input
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -69,10 +69,10 @@ const submit = () => {
             </div>
 
             <div class="block mt-4">
-                <label class="flex items-center">
+                <Label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
                     <span class="ms-2 text-sm text-gray-600">Remember me</span>
-                </label>
+                </Label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -84,13 +84,13 @@ const submit = () => {
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton
+                <Button
                     class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </GuestLayout>
