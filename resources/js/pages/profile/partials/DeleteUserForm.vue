@@ -7,25 +7,28 @@ import Input from '@/components/ui/input/Input.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
 import { route } from 'ziggy-js';
+import { useFocus } from '@vueuse/core';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref<HTMLInputElement | null>(null);
+const { focused } = useFocus(passwordInput);
 
 const form = useForm({
     password: '',
 });
 
+const focusInput = () => (focused.value = true);
+
 const confirmUserDeletion = () => {
     confirmingUserDeletion.value = true;
-
-    nextTick(() => passwordInput.value?.focus());
+    nextTick(() => focusInput());
 };
 
 const deleteUser = () => {
     form.delete(route('profile.destroy'), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
-        onError: () => passwordInput.value?.focus(),
+        onError: () => focusInput(),
         onFinish: () => {
             form.reset();
         },
@@ -34,7 +37,6 @@ const deleteUser = () => {
 
 const closeModal = () => {
     confirmingUserDeletion.value = false;
-
     form.reset();
 };
 </script>
