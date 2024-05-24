@@ -6,9 +6,12 @@ import Input from '@/components/ui/input/Input.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { route } from 'ziggy-js';
+import { useFocus } from '@vueuse/core';
 
 const passwordInput = ref<HTMLInputElement | null>(null);
 const currentPasswordInput = ref<HTMLInputElement | null>(null);
+const { focused: passwordFocused } = useFocus(passwordInput);
+const { focused: currentPasswordFocused } = useFocus(currentPasswordInput);
 
 const form = useForm({
     current_password: '',
@@ -25,11 +28,11 @@ const updatePassword = () => {
         onError: () => {
             if (form.errors.password) {
                 form.reset('password', 'password_confirmation');
-                passwordInput.value?.focus();
+                passwordFocused.value = true;
             }
             if (form.errors.current_password) {
                 form.reset('current_password');
-                currentPasswordInput.value?.focus();
+                currentPasswordFocused.value = true;
             }
         },
     });
