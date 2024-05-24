@@ -6,6 +6,13 @@ import { route } from 'ziggy-js';
 import Label from '@/components/ui/label/Label.vue';
 import Button from '@/components/ui/button/Button.vue';
 import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card';
 import Input from '@/components/ui/input/Input.vue';
 
 defineProps<{
@@ -37,61 +44,81 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div>
-                <Label for="email">Email</Label>
+            <Card class="mx-auto max-w-sm">
+                <CardHeader>
+                    <CardTitle class="text-2xl">Login</CardTitle>
+                    <CardDescription>
+                        Enter your email below to login to your account
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div class="grid gap-4">
+                        <div class="grid gap-2">
+                            <Label for="email">Email</Label>
 
-                <Input
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+                            <Input
+                                id="email"
+                                v-model="form.email"
+                                type="email"
+                                class="mt-1 block w-full"
+                                required
+                                autocomplete="username"
+                            />
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <Label for="password">Password</Label>
-
-                <Input
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="block mt-4">
-                <Label class="flex items-center">
-                    <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
-                </Label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
-                </Link>
-
-                <Button
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Log in
-                </Button>
-            </div>
+                            <InputError
+                                class="mt-2"
+                                :message="form.errors.email"
+                            />
+                        </div>
+                        <div class="grid gap-2">
+                            <div class="flex items-center">
+                                <Label for="password">Password</Label>
+                                <Link
+                                    v-if="canResetPassword"
+                                    :href="route('password.request')"
+                                    class="ml-auto inline-block text-sm underline"
+                                >
+                                    Forgot your password?
+                                </Link>
+                            </div>
+                            <Input
+                                id="password"
+                                v-model="form.password"
+                                type="password"
+                                class="mt-1 block w-full"
+                                required
+                                autocomplete="new-password"
+                            />
+                            <InputError
+                                class="mt-2"
+                                :message="form.errors.password"
+                            />
+                        </div>
+                        <Button
+                            type="submit"
+                            class="w-full"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                            >Sign in</Button
+                        >
+                    </div>
+                    <div class="mt-4 text-sm flex flex-row justify-between">
+                        <Label class="flex items-center">
+                            <Checkbox
+                                v-model:checked="form.remember"
+                                name="remember"
+                            />
+                            <span class="ms-2 text-sm">Remember me</span>
+                        </Label>
+                        <div>
+                            Don't have an account?
+                            <Link :href="route('register')" class="underline"
+                                >Sign up</Link
+                            >
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
         </form>
     </GuestLayout>
 </template>
