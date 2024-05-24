@@ -26,6 +26,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
 </script>
 
 <template>
+    <!-- @ts-expect-error -->
     <DropdownMenuRadioItem
         v-bind="forwarded"
         :class="
