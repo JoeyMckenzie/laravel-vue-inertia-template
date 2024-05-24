@@ -10,7 +10,7 @@ lint-php:
     find app/ resources/ routes/ database/ tests/ phpstan.neon | entr -s 'composer run lint'
 
 lint-js:
-    find resources/ *.ts *.js biome.json | entr -s 'pnpm run lint'
+    find resources/js/ *.ts *.js | entr -s 'pnpm run check'
 
 test:
     find app/ resources/ routes/ database/ tests/ phpstan.neon | entr -s 'composer run test'
