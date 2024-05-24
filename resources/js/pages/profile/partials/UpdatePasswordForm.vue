@@ -5,6 +5,7 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
 import TextInput from '@/components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { route } from 'ziggy-js';
 
 const passwordInput = ref<HTMLInputElement | null>(null);
 const currentPasswordInput = ref<HTMLInputElement | null>(null);

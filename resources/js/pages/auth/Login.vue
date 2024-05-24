@@ -6,6 +6,7 @@ import InputLabel from '@/components/InputLabel.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import TextInput from '@/components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { route } from 'ziggy-js';
 
 defineProps<{
     canResetPassword?: boolean;
