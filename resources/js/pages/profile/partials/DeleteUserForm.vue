@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import InputError from '@/components/InputError.vue';
-import Label from '@/components/ui/label/Label.vue';
 import Button from '@/components/ui/button/Button.vue';
-import Input from '@/components/ui/input/Input.vue';
-import { useForm } from '@inertiajs/vue3';
-import { nextTick, ref } from 'vue';
-import { route } from 'ziggy-js';
-import { useFocus } from '@vueuse/core';
 import {
     Dialog,
     DialogClose,
-    DialogTrigger,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogDescription,
-    DialogContent,
-    DialogFooter,
+    DialogTrigger,
 } from '@/components/ui/dialog';
+import Input from '@/components/ui/input/Input.vue';
+import Label from '@/components/ui/label/Label.vue';
+import { useForm } from '@inertiajs/vue3';
+import { useFocus } from '@vueuse/core';
+import { ref } from 'vue';
+import { route } from 'ziggy-js';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref<HTMLInputElement | null>(null);
@@ -27,11 +27,6 @@ const form = useForm({
 });
 
 const focusInput = () => (focused.value = true);
-
-const confirmUserDeletion = () => {
-    confirmingUserDeletion.value = true;
-    nextTick(() => focusInput());
-};
 
 const deleteUser = () => {
     form.delete(route('profile.destroy'), {

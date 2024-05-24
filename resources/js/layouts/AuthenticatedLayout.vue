@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
-import Button from '@/components/ui/button/Button.vue';
 import NavLink from '@/components/NavLink.vue';
 import ResponsiveNavLink from '@/components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import ThemeToggle from '@/components/ThemeToggle.vue';
+import Button from '@/components/ui/button/Button.vue';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -13,8 +12,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import ThemeToggle from '@/components/ThemeToggle.vue';
 import { Icon } from '@iconify/vue';
+import { Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const showingNavigationDropdown = ref(false);
 </script>

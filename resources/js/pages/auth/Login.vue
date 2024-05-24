@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import GuestLayout from '@/layouts/GuestLayout.vue';
 import InputError from '@/components/InputError.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
-import { route } from 'ziggy-js';
-import Label from '@/components/ui/label/Label.vue';
 import Button from '@/components/ui/button/Button.vue';
-import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
 import {
     Card,
     CardContent,
@@ -13,7 +8,12 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
 import Input from '@/components/ui/input/Input.vue';
+import Label from '@/components/ui/label/Label.vue';
+import GuestLayout from '@/layouts/GuestLayout.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import { route } from 'ziggy-js';
 
 defineProps<{
     canResetPassword?: boolean;
