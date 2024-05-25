@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\SetList;
@@ -19,6 +20,10 @@ return RectorConfig::configure()
     ])
     ->withSkip([__DIR__.'/bootstrap/cache'])
     ->withPhpSets(php83: true)
+    ->withCache(
+        cacheDirectory: '/tmp/rector',
+        cacheClass: FileCacheStorage::class
+    )
     ->withRules([
         AddVoidReturnTypeWhereNoReturnRector::class,
         InlineConstructorDefaultToPropertyRector::class,

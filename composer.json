@@ -73,7 +73,6 @@
         "check": [
             "@lint",
             "@fmt",
-            "@rector",
             "@test:types"
         ],
         "check:test": [
