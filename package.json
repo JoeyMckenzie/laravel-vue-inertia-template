@@ -11,7 +11,10 @@
         "check": "pnpm run lint && pnpm run fmt:check"
     },
     "lint-staged": {
-        "**/*.{js,ts,tsx}": "pnpm run fmt && pnpm run fix",
+        "**/*.{js,ts,tsx}": [
+            "pnpm run fmt",
+            "pnpm run lint"
+        ],
         "**/*.php": "composer run fmt"
     },
     "devDependencies": {
