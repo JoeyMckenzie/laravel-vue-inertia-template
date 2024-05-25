@@ -1,8 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "joeymckenzie/laravel-vue-starter-kit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "A starter kit for Laravel using Vue and Inertia.js.",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.2",
@@ -13,7 +16,9 @@
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^2.9",
         "laravel/breeze": "^2.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
@@ -21,6 +26,10 @@
         "nunomaduro/collision": "^8.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest-plugin-type-coverage": "^2.8",
+        "phpstan/phpstan": "^1.11",
+        "phpstan/phpstan-strict-rules": "^1.6",
+        "rector/rector": "^1.1",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
@@ -50,6 +59,26 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
+        ],
+        "test:integration": "./vendor/bin/pest --colors=always",
+        "test:watch": "./vendor/bin/pest --watch --parallel",
+        "test:types": "./vendor/bin/pest --type-coverage --min=100",
+        "test": [
+            "@test:types",
+            "@test:integration"
+        ],
+        "lint": "./vendor/bin/phpstan analyze",
+        "fmt": "./vendor/bin/pint -vv",
+        "rector": "vendor/bin/rector process",
+        "check": [
+            "@lint",
+            "@fmt",
+            "@rector",
+            "@test:types"
+        ],
+        "check:test": [
+            "@check",
+            "@test:integration"
         ]
     },
     "extra": {

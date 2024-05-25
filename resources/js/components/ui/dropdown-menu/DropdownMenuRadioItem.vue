@@ -22,11 +22,10 @@ const delegatedProps = computed(() => {
     return delegated;
 });
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+const forwarded = useForwardPropsEmits(delegatedProps.value, emits);
 </script>
 
 <template>
-    <!-- @ts-expect-error -->
     <DropdownMenuRadioItem
         v-bind="forwarded"
         :class="
