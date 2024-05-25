@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { cn } from '@/lib/utils';
 import { DotFilledIcon } from '@radix-icons/vue';
 import {
     DropdownMenuItemIndicator,
     DropdownMenuRadioItem,
-    useForwardPropsEmits,
     type DropdownMenuRadioItemEmits,
     type DropdownMenuRadioItemProps,
+    useForwardPropsEmits,
 } from 'radix-vue';
 import { computed, type HTMLAttributes } from 'vue';
 
@@ -22,18 +22,18 @@ const delegatedProps = computed(() => {
     return delegated;
 });
 
-const forwarded = useForwardPropsEmits(delegatedProps.value, emits);
+const forwarded = useForwardPropsEmits(delegatedProps, emits);
 </script>
 
 <template>
     <DropdownMenuRadioItem
-        v-bind="forwarded"
         :class="
             cn(
                 'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
                 props.class,
             )
         "
+        v-bind="forwarded"
     >
         <span
             class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center"
