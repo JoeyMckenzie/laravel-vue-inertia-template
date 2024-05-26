@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
 import NavLink from '@/components/NavLink.vue';
 import ResponsiveNavLink from '@/components/ResponsiveNavLink.vue';
@@ -24,12 +24,12 @@ const showingNavigationDropdown = ref(false);
         <div class="min-h-screen">
             <nav class="border-b border-neutral-100 dark:border-neutral-900">
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="flex h-16 justify-between">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                            <div class="flex shrink-0 items-center">
+                                <Link :href="route('todos.index')">
                                     <ApplicationLogo
                                         class="block h-9 w-auto fill-current"
                                     />
@@ -41,45 +41,47 @@ const showingNavigationDropdown = ref(false);
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                             >
                                 <NavLink
-                                    :href="route('dashboard')"
                                     :active="route().current('dashboard')"
+                                    :href="route('todos.index')"
                                 >
                                     Dashboard
                                 </NavLink>
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <div class="hidden sm:ms-6 sm:flex sm:items-center">
                             <ThemeToggle />
                             <!-- Settings Dropdown -->
-                            <div class="ms-3 relative">
+                            <div class="relative ms-3">
                                 <DropdownMenu>
                                     <DropdownMenuTrigger as-child>
                                         <Button variant="ghost">
                                             {{ $page.props.auth.user.name }}
                                             <Icon
+                                                class="-me-0.5 ms-2 h-4 w-4"
                                                 icon="iconamoon:profile-circle"
-                                                class="ms-2 -me-0.5 h-4 w-4" /></Button
-                                    ></DropdownMenuTrigger>
+                                            />
+                                        </Button>
+                                    </DropdownMenuTrigger>
                                     <DropdownMenuContent align="end">
                                         <DropdownMenuLabel
-                                            >My Account</DropdownMenuLabel
-                                        >
+                                            >My Account
+                                        </DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <Link :href="route('profile.edit')">
                                             <DropdownMenuItem
-                                                >Profile</DropdownMenuItem
-                                            >
+                                                >Profile
+                                            </DropdownMenuItem>
                                         </Link>
                                         <Link
-                                            class="w-full"
                                             :href="route('logout')"
-                                            method="post"
                                             as="button"
+                                            class="w-full"
+                                            method="post"
                                         >
                                             <DropdownMenuItem
-                                                >Log out</DropdownMenuItem
-                                            >
+                                                >Log out
+                                            </DropdownMenuItem>
                                         </Link>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -96,21 +98,21 @@ const showingNavigationDropdown = ref(false);
                                 "
                             >
                                 <Icon
-                                    class="h-6 w-6"
                                     :class="{
                                         hidden: showingNavigationDropdown,
                                         'inline-flex':
                                             !showingNavigationDropdown,
                                     }"
+                                    class="h-6 w-6"
                                     icon="material-symbols:menu"
                                 />
                                 <Icon
-                                    class="h-6 w-6"
                                     :class="{
                                         hidden: !showingNavigationDropdown,
                                         'inline-flex':
                                             showingNavigationDropdown,
                                     }"
+                                    class="h-6 w-6"
                                     icon="material-symbols:close"
                                 />
                             </Button>
@@ -126,10 +128,10 @@ const showingNavigationDropdown = ref(false);
                     }"
                     class="sm:hidden"
                 >
-                    <div class="pt-2 pb-3 space-y-1">
+                    <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
-                            :href="route('dashboard')"
                             :active="route().current('dashboard')"
+                            :href="route('todos.index')"
                         >
                             Dashboard
                         </ResponsiveNavLink>
@@ -137,14 +139,14 @@ const showingNavigationDropdown = ref(false);
 
                     <!-- Responsive Settings Options -->
                     <div
-                        class="pt-4 pb-1 border-t border-neutral-200 dark:border-neutral-800"
+                        class="border-t border-neutral-200 pb-1 pt-4 dark:border-neutral-800"
                     >
                         <div class="px-4">
-                            <div class="font-medium text-base">
+                            <div class="text-base font-medium">
                                 {{ $page.props.auth.user.name }}
                             </div>
                             <div
-                                class="font-medium text-sm text-neutral-500 dark:text-neutral-400"
+                                class="text-sm font-medium text-neutral-500 dark:text-neutral-400"
                             >
                                 {{ $page.props.auth.user.email }}
                             </div>
@@ -156,8 +158,8 @@ const showingNavigationDropdown = ref(false);
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
                                 :href="route('logout')"
-                                method="post"
                                 as="button"
+                                method="post"
                             >
                                 Log Out
                             </ResponsiveNavLink>
@@ -168,7 +170,7 @@ const showingNavigationDropdown = ref(false);
 
             <!-- Page Heading -->
             <header v-if="$slots.header" class="shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
             </header>

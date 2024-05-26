@@ -14,6 +14,8 @@ Route::get('/', fn () => Inertia::render('Welcome', [
     'phpVersion' => PHP_VERSION,
 ]));
 
+Route::resource('todos', App\Http\Controllers\TodoController::class);
+
 Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function (): void {

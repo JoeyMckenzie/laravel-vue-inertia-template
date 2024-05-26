@@ -2,7 +2,6 @@
 import {
     Table,
     TableBody,
-    TableCell,
     TableHead,
     TableHeader,
     TableRow,
@@ -15,8 +14,13 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import TodosTablePagination from '@/components/TodosTablePagination.vue';
+import { PaginatedTodos } from '@/lib/models';
+import TodoTableRow from '@/components/TodosTableRow.vue';
+
+defineProps<{
+    todos: PaginatedTodos;
+}>();
 </script>
 
 <template>
@@ -31,184 +35,29 @@ import TodosTablePagination from '@/components/TodosTablePagination.vue';
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Customer</TableHead>
-                        <TableHead class="hidden sm:table-cell">
-                            Type
+                        <TableHead>Name</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Title</TableHead>
+                        <TableHead>
+                            <span class="sr-only">Actions</span>
                         </TableHead>
-                        <TableHead class="hidden sm:table-cell">
-                            Status
-                        </TableHead>
-                        <TableHead class="hidden md:table-cell">
-                            Date
-                        </TableHead>
-                        <TableHead class="text-right"> Amount</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Olivia Smith</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                olivia@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Refund
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="outline">
-                                Declined
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-24
-                        </TableCell>
-                        <TableCell class="text-right"> $150.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Noah Williams</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                noah@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Subscription
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="secondary">
-                                Fulfilled
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-25
-                        </TableCell>
-                        <TableCell class="text-right"> $350.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Emma Brown</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                emma@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Sale
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="secondary">
-                                Fulfilled
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-26
-                        </TableCell>
-                        <TableCell class="text-right"> $450.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Liam Johnson</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                liam@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Sale
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="secondary">
-                                Fulfilled
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-23
-                        </TableCell>
-                        <TableCell class="text-right"> $250.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Liam Johnson</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                liam@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Sale
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="secondary">
-                                Fulfilled
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-23
-                        </TableCell>
-                        <TableCell class="text-right"> $250.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Olivia Smith</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                olivia@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Refund
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="outline">
-                                Declined
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-24
-                        </TableCell>
-                        <TableCell class="text-right"> $150.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <div class="font-medium">Emma Brown</div>
-                            <div
-                                class="hidden text-sm text-muted-foreground md:inline"
-                            >
-                                emma@example.com
-                            </div>
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            Sale
-                        </TableCell>
-                        <TableCell class="hidden sm:table-cell">
-                            <Badge class="text-xs" variant="secondary">
-                                Fulfilled
-                            </Badge>
-                        </TableCell>
-                        <TableCell class="hidden md:table-cell">
-                            2023-06-26
-                        </TableCell>
-                        <TableCell class="text-right"> $450.00</TableCell>
-                    </TableRow>
+                    <TodoTableRow
+                        v-for="todo in todos.data"
+                        :key="todo.name"
+                        :todo="todo"
+                    />
                 </TableBody>
             </Table>
         </CardContent>
         <CardFooter class="flex flex-col justify-center gap-y-4">
-            <TodosTablePagination />
-            <div class="text-muted-foreground text-xs">
-                Showing<strong>1 - 10</strong> of <strong>100</strong> todos
+            <TodosTablePagination :todos />
+            <div class="text-xs text-muted-foreground">
+                Showing <strong>{{ todos.from }} - {{ todos.to }}</strong> of
+                <strong>{{ todos.total }}</strong> todos
             </div>
         </CardFooter>
     </Card>
 </template>
-
-<style scoped></style>

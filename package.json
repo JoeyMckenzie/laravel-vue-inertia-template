@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build && vite build --ssr",
-        "fmt": "prettier --write ./resources/js",
+        "fmt": "prettier --write ./resources/js --plugin=prettier-plugin-tailwindcss",
         "fmt:check": "prettier --check ./resources/js",
         "lint": "eslint \"resources/js/**/*.{ts,vue}\"",
         "fix": "eslint --fix \"resources/js/**/*.{ts,vue}\"",

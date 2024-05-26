@@ -10,19 +10,40 @@ import {
     PaginationPrev,
 } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';
+import { PaginatedTodos } from '@/lib/models';
+import { Link } from '@inertiajs/vue3';
+
+defineProps<{
+    todos: PaginatedTodos;
+}>();
 </script>
 
 <template>
     <Pagination
         v-slot="{ page }"
-        :default-page="2"
+        :default-page="todos.current_page"
         :sibling-count="1"
-        :total="100"
+        :total="todos.total"
         show-edges
     >
         <PaginationList v-slot="{ items }" class="flex items-center gap-1">
-            <PaginationFirst />
-            <PaginationPrev />
+            <Link
+                :disabled="todos.current_page === 1"
+                :href="route('todos.index', { page: 1 })"
+                as="button"
+                preserve-scroll
+            >
+                <PaginationFirst />
+            </Link>
+
+            <Link
+                :disabled="todos.current_page === 1"
+                :href="route('todos.index', { page: todos.current_page - 1 })"
+                as="button"
+                preserve-scroll
+            >
+                <PaginationPrev />
+            </Link>
 
             <template v-for="(item, index) in items">
                 <PaginationListItem
@@ -31,18 +52,40 @@ import { Button } from '@/components/ui/button';
                     :value="item.value"
                     as-child
                 >
-                    <Button
-                        :variant="item.value === page ? 'default' : 'outline'"
-                        class="w-10 h-10 p-0"
+                    <Link
+                        :href="route('todos.index', { page: item.value })"
+                        preserve-scroll
                     >
-                        {{ item.value }}
-                    </Button>
+                        <Button
+                            :variant="
+                                item.value === page ? 'default' : 'outline'
+                            "
+                            class="h-10 w-10 p-0"
+                        >
+                            {{ item.value }}
+                        </Button>
+                    </Link>
                 </PaginationListItem>
                 <PaginationEllipsis v-else :key="item.type" :index="index" />
             </template>
 
-            <PaginationNext />
-            <PaginationLast />
+            <Link
+                :disabled="todos.current_page === todos.last_page"
+                :href="route('todos.index', { page: todos.current_page + 1 })"
+                as="button"
+                preserve-scroll
+            >
+                <PaginationNext />
+            </Link>
+
+            <Link
+                :disabled="todos.current_page === todos.last_page"
+                :href="route('todos.index', { page: todos.last_page })"
+                as="button"
+                preserve-scroll
+            >
+                <PaginationLast />
+            </Link>
         </PaginationList>
     </Pagination>
 </template>

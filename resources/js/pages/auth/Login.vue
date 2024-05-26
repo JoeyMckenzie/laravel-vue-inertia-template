@@ -39,7 +39,7 @@ const submit = () => {
     <GuestLayout>
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
@@ -102,7 +102,7 @@ const submit = () => {
                             >Sign in</Button
                         >
                     </div>
-                    <div class="mt-4 text-sm flex flex-row justify-between">
+                    <div class="mt-4 flex flex-row justify-between text-sm">
                         <Label class="flex items-center">
                             <Checkbox
                                 v-model:checked="form.remember"

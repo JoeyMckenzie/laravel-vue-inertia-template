@@ -16,13 +16,13 @@ defineProps<{
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl leading-tight">Profile</h2>
+            <h2 class="text-xl font-semibold leading-tight">Profile</h2>
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                 <div
-                    class="dark:bg-neutral-900 p-4 sm:p-8 shadow sm:rounded-lg"
+                    class="p-4 shadow dark:bg-neutral-900 sm:rounded-lg sm:p-8"
                 >
                     <UpdateProfileInformationForm
                         :must-verify-email="mustVerifyEmail"
@@ -32,13 +32,13 @@ defineProps<{
                 </div>
 
                 <div
-                    class="dark:bg-neutral-900 p-4 sm:p-8 shadow sm:rounded-lg"
+                    class="p-4 shadow dark:bg-neutral-900 sm:rounded-lg sm:p-8"
                 >
                     <UpdatePasswordForm class="max-w-xl" />
                 </div>
 
                 <div
-                    class="dark:bg-neutral-900 p-4 sm:p-8 shadow sm:rounded-lg"
+                    class="p-4 shadow dark:bg-neutral-900 sm:rounded-lg sm:p-8"
                 >
                     <DeleteUserForm class="max-w-xl" />
                 </div>
