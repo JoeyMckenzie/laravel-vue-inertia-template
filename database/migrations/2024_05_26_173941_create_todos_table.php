@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('title');
-            $table->datetime('due_by');
+            $table->dateTime('due_by');
             $table->enum('status', TodoStatus::toArray());
             $table->foreignIdFor(User::class);
             $table->timestamps();
