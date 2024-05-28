@@ -2,6 +2,7 @@
 import { Link } from '@inertiajs/vue3'
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
+import { format } from 'date-fns'
 import { TableCell, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -34,10 +35,10 @@ const statusBadge = computed((): { variant: BadgeType, icon: string } => {
         variant: 'default',
         icon: 'gg:check-o',
       }
-    case 'Cancelled':
+    case 'Overdue':
       return {
         variant: 'destructive',
-        icon: 'mdi:cancel',
+        icon: 'lucide:calendar-x',
       }
     case 'In Progress':
       return {
@@ -51,6 +52,8 @@ const statusBadge = computed((): { variant: BadgeType, icon: string } => {
       }
   }
 })
+
+const formattedDueBy = computed(() => format(props.todo.due_by, 'PP'))
 </script>
 
 <template>
@@ -64,14 +67,17 @@ const statusBadge = computed((): { variant: BadgeType, icon: string } => {
         {{ todo.status }}
       </Badge>
     </TableCell>
-    <TableCell class-name="truncate">
-      {{ todo.title }}}
+    <TableCell class="truncate">
+      {{ todo.title }}
+    </TableCell>
+    <TableCell>
+      {{ formattedDueBy }}
     </TableCell>
     <TableCell>
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <Button aria-haspopup="true" size="icon" variant="ghost">
-            <Icon class-name="h-4 w-4" icon="lucide:ellipsis" />
+            <Icon class="size-4" icon="lucide:ellipsis" />
             <span class="sr-only">Toggle menu</span>
           </Button>
         </DropdownMenuTrigger>

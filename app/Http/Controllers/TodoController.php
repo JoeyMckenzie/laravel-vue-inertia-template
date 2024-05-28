@@ -21,6 +21,19 @@ final class TodoController extends Controller
         return back();
     }
 
+    public function store(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required'],
+            'status' => ['required', Rule::enum(TodoStatus::class)],
+            'due_by' => ['required']
+        ]);
+
+        ddd($validated);
+
+        return redirect('index');
+    }
+
     public function update(Request $request, Todo $todo): RedirectResponse
     {
         $validated = $request->validate([

@@ -19,7 +19,7 @@ remigrate:
     php artisan migrate:fresh --seed
 
 ci:
-    composer run check && pnpm run check
+    composer run check && pnpm run lint
 
 prepare:
     git config core.hookspath .githooks

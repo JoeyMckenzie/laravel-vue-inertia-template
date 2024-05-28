@@ -4,18 +4,17 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build && vite build --ssr",
-    "fmt": "prettier --write ./resources/js --plugin=prettier-plugin-tailwindcss",
-    "fmt:check": "prettier --check ./resources/js",
     "lint": "eslint \"resources/js/**/*.{ts,vue}\"",
-    "fix": "eslint --fix \"resources/js/**/*.{ts,vue}\"",
-    "check": "pnpm run lint && pnpm run fmt:check"
+    "fix": "eslint --fix \"resources/js/**/*.{ts,vue}\""
   },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
     "@vueuse/core": "^10.10.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "radix-vue": "https://pkg.pr.new/radix-vue@943",
+    "date-fns": "^3.6.0",
+    "lucide-vue-next": "^0.379.0",
+    "radix-vue": "^1.8.2",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -45,8 +44,7 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
-      "pnpm run fmt",
-      "pnpm run lint"
+      "pnpm run fix"
     ],
     "**/*.php": [
       "composer run fmt",

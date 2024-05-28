@@ -6,7 +6,7 @@ export default antfu({
 }, ...tailwind.configs['flat/recommended'], {
   settings: {
     tailwindcss: {
-      config: 'tailwind.config.ts', // returned from `loadConfig()` utility if not provided
+      config: 'tailwind.config.ts',
       cssFiles: [
         'resources/css/app.css',
       ],
