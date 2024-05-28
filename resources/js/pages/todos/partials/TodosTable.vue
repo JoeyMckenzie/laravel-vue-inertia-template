@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 import { ref } from 'vue'
-import AddTodoForm from './AddTodoForm.vue'
+import AddTodoForm from './CreateTodoForm.vue'
+import TodosTablePagination from './TodosTablePagination.vue'
+import TodoTableRow from './TodosTableRow.vue'
 import {
   Table,
   TableBody,
@@ -17,9 +19,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import TodosTablePagination from '@/components/TodosTablePagination.vue'
 import type { PaginatedTodos } from '@/lib/models'
-import TodoTableRow from '@/components/TodosTableRow.vue'
 import Button from '@/components/ui/button/Button.vue'
 
 defineProps<{

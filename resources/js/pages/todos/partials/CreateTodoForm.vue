@@ -18,8 +18,8 @@ import Input from '@/components/ui/input/Input.vue'
 import InputError from '@/components/InputError.vue'
 import Label from '@/components/ui/label/Label.vue'
 import Button from '@/components/ui/button/Button.vue'
-import TodoDueByDate from '@/components/TodoDueByDate.vue'
-import TodoStatusSelect from '@/components/TodoStatusSelect.vue'
+import TodoDueByDate from '@/pages/todos/partials/TodoDueByDate.vue'
+import TodoStatusSelect from '@/pages/todos/partials/TodoStatusSelect.vue'
 import type { TodoStatus } from '@/lib/models'
 
 defineProps<{

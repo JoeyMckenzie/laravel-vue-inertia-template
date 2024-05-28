@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { Head } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue'
-import TodosTable from '@/components/TodosTable.vue'
-import TodoStat from '@/components/TodoStat.vue'
+import TodosTable from '@/pages/todos/partials/TodosTable.vue'
+import TodoStat from '@/pages/todos/partials/TodoStat.vue'
 import type { PaginatedModel, Todo } from '@/lib/models'
 
 defineProps<{
@@ -11,12 +11,12 @@ defineProps<{
 </script>
 
 <template>
-  <Head title="Dashboard" />
+  <Head title="Todos" />
 
   <AuthenticatedLayout>
     <template #header>
       <h2 class="text-xl font-semibold leading-tight">
-        Dashboard
+        Todos
       </h2>
     </template>
 

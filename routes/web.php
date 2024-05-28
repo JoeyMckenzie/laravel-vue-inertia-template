@@ -19,8 +19,6 @@ Route::get('/', fn () => Inertia::render('Welcome', [
 Route::resource('todos', App\Http\Controllers\TodoController::class)
     ->middleware(['auth', 'verified']);
 
-Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function (): void {
     Route::get('/profile', fn (Illuminate\Http\Request $request): Response => (new ProfileController())->edit($request))->name('profile.edit');
     Route::patch('/profile', fn (App\Http\Requests\ProfileUpdateRequest $request): RedirectResponse => (new ProfileController())->update($request))->name('profile.update');

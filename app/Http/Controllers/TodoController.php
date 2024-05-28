@@ -47,7 +47,7 @@ final class TodoController extends Controller
     {
         $todos = auth()->user()?->todos()->paginate(10);
 
-        return Inertia::render('Dashboard', [
+        return Inertia::render('todos/Index', [
             'todos' => $todos,
         ]);
     }
