@@ -10,9 +10,9 @@ enum TodoStatus: string
 
     case IN_PROGRESS = 'In Progress';
 
-    case DONE = 'Done';
+    case OVERDUE = 'Overdue';
 
-    case CANCELLED = 'Cancelled';
+    case DONE = 'Done';
 
     /**
      * @return string[]
