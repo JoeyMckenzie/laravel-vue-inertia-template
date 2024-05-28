@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
-import { Link } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import AddTodoForm from './AddTodoForm.vue'
 import {

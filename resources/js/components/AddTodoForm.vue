@@ -2,10 +2,8 @@
 import { useForm } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import { useFocus } from '@vueuse/core'
-import {
-  DateFormatter,
-  type DateValue,
-  getLocalTimeZone,
+import type {
+  DateValue,
 } from '@internationalized/date'
 import {
   Dialog,
@@ -15,7 +13,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog'
 import Input from '@/components/ui/input/Input.vue'
 import InputError from '@/components/InputError.vue'
@@ -49,8 +46,6 @@ function cancelCreation() {
 }
 
 function createTodo() {
-  console.log({ form })
-
   form.post(route('todos.store'), {
     onSuccess: () => {
       form.reset()
