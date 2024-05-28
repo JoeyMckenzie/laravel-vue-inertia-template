@@ -46,6 +46,8 @@ function cancelCreation() {
 }
 
 function createTodo() {
+  console.log({ form })
+
   form.post(route('todos.store'), {
     onSuccess: () => {
       form.reset()
