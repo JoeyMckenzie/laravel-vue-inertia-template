@@ -19,7 +19,15 @@ const props = defineProps<{
     todo: Todo;
 }>();
 
-const statusBadge = computed(() => {
+type BadgeType =
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | null
+    | undefined;
+
+const statusBadge = computed((): { variant: BadgeType; icon: string } => {
     switch (props.todo.status) {
         case 'Done':
             return {
@@ -38,7 +46,7 @@ const statusBadge = computed(() => {
             };
         default:
             return {
-                variant: 'ghost',
+                variant: 'outline',
                 icon: 'formkit:start',
             };
     }
@@ -59,21 +67,23 @@ const statusBadge = computed(() => {
             <DropdownMenu>
                 <DropdownMenuTrigger as-child>
                     <Button aria-haspopup="true" size="icon" variant="ghost">
-                        <Icon
-                            class-name="h-4 w-4"
-                            icon="solar:menu-dots-outline"
-                        />
+                        <Icon class-name="h-4 w-4" icon="lucide:ellipsis" />
                         <span class="sr-only">Toggle menu</span>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <Link :href="route('todos.show', todo.id)">
+                    <Link
+                        :href="route('todos.show', todo.id)"
+                        as="button"
+                        class="w-full"
+                    >
                         <DropdownMenuItem>Edit</DropdownMenuItem>
                     </Link>
                     <Link
                         :href="route('todos.destroy', todo.id)"
+                        as="button"
                         class="w-full text-destructive"
                         method="delete"
                         preserve-scroll
