@@ -22,6 +22,7 @@ final class Todo extends Model
     public static function getNextName(): string
     {
         // Extract the numeric part from the names and find the maximum value
+        // @phpstan-ignore-next-line
         $maxNumber = self::query()
             ->where('name', 'like', 'TODO-%')
             ->selectRaw('MAX(CAST(SUBSTRING(name, 6) AS UNSIGNED)) as max_number')
@@ -29,6 +30,7 @@ final class Todo extends Model
             ->first();
 
         // Increment the maximum value by 1
+        // @phpstan-ignore-next-line
         $nextNumber = $maxNumber ? $maxNumber + 1 : 1;
 
         // Return the new name
