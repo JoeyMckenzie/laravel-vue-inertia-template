@@ -57,9 +57,7 @@ defineProps<{
                         preserve-scroll
                     >
                         <Button
-                            :variant="
-                                item.value === page ? 'default' : 'outline'
-                            "
+                            :variant="item.value === page ? 'default' : 'outline'"
                             class="size-10 p-0"
                         >
                             {{ item.value }}

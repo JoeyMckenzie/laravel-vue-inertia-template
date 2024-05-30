@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
 import TodosTablePagination from './TodosTablePagination.vue';
 import TodoTableRow from './TodosTableRow.vue';
 import CreateTodoModalForm from './CreateTodoModalForm.vue';
@@ -20,9 +21,11 @@ import {
 
 import type { PaginatedTodos } from '@/lib/models';
 
-defineProps<{
+const props = defineProps<{
     todos: PaginatedTodos;
 }>();
+
+const hasPaginatedTodos = computed(() => props.todos.last_page > 1);
 </script>
 
 <template>
@@ -59,7 +62,7 @@ defineProps<{
             </Table>
         </CardContent>
         <CardFooter class="flex flex-col justify-center gap-y-4">
-            <TodosTablePagination :todos />
+            <TodosTablePagination v-if="hasPaginatedTodos" :todos />
             <div class="text-xs text-muted-foreground">
                 Showing <strong>{{ todos.from }} - {{ todos.to }}</strong> of
                 <strong>{{ todos.total }}</strong> todos

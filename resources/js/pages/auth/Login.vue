@@ -96,6 +96,21 @@ function submit() {
                                 :message="form.errors.password"
                             />
                         </div>
+                        <div class="flex flex-row justify-between text-sm">
+                            <Label class="flex items-center">
+                                <Checkbox
+                                    v-model:checked="form.remember"
+                                    name="remember"
+                                />
+                                <span class="ms-2 text-sm">Remember me</span>
+                            </Label>
+                            <div>
+                                Don't have an account?
+                                <Link :href="route('register')" class="underline">
+                                    Sign up
+                                </Link>
+                            </div>
+                        </div>
                         <Button
                             type="submit"
                             class="w-full"
@@ -104,21 +119,6 @@ function submit() {
                         >
                             Sign in
                         </Button>
-                    </div>
-                    <div class="mt-4 flex flex-row justify-between text-sm">
-                        <Label class="flex items-center">
-                            <Checkbox
-                                v-model:checked="form.remember"
-                                name="remember"
-                            />
-                            <span class="ms-2 text-sm">Remember me</span>
-                        </Label>
-                        <div>
-                            Don't have an account?
-                            <Link :href="route('register')" class="underline">
-                                Sign up
-                            </Link>
-                        </div>
                     </div>
                 </CardContent>
             </Card>
