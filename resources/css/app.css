@@ -73,23 +73,3 @@
         @apply bg-background text-foreground;
     }
 }
-
-@layer base {
-    @font-face {
-        font-family: 'Geist';
-        font-weight: 400;
-        src: url('/resources/fonts/geist/Geist-Regular.woff2') format('woff2');
-    }
-
-    @font-face {
-        font-family: 'Geist';
-        font-weight: 500;
-        src: url('/resources/fonts/geist/Geist-SemiBold.woff2') format('woff2');
-    }
-
-    @font-face {
-        font-family: 'Geist';
-        font-weight: 600;
-        src: url('/resources/fonts/geist/Geist-Bold.woff2') format('woff2');
-    }
-}

@@ -1,5 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import { Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 import forms from '@tailwindcss/forms';
 
@@ -26,7 +26,7 @@ export default {
         },
         extend: {
             fontFamily: {
-                sans: ['Geist', ...defaultTheme.fontFamily.sans],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 border: 'hsl(var(--border))',
