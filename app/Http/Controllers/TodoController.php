@@ -21,15 +21,22 @@ final class TodoController extends Controller
         return back();
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): Response
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => ['required'],
             'status' => ['required', Rule::enum(TodoStatus::class)],
             'due_by' => ['required'],
         ]);
 
-        return redirect('index');
+        $nextTodo = Todo::getNextName();
+        $todoProperties = array_merge([
+            'name' => $nextTodo,
+        ], $validated);
+
+        auth()->user()?->todos()->create($todoProperties);
+
+        return self::index();
     }
 
     public function update(Request $request, Todo $todo): RedirectResponse
