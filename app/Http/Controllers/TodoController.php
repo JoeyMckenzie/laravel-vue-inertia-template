@@ -39,7 +39,7 @@ final class TodoController extends Controller
         $todos = auth()->user()?->todos()->paginate(10);
 
         return redirect()->route('todos.index', [
-            'page' => $todos->lastPage(),
+            'page' => $todos?->lastPage() ?? 1,
         ]);
     }
 
