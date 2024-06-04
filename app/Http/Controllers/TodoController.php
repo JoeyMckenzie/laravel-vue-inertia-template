@@ -36,9 +36,10 @@ final class TodoController extends Controller
 
         auth()->user()?->todos()->create($todoProperties);
         session()->flash('name', $nextTodo);
+        $todos = auth()->user()?->todos()->paginate(10);
 
         return redirect()->route('todos.index', [
-            'page' => 6
+            'page' => $todos->lastPage(),
         ]);
     }
 

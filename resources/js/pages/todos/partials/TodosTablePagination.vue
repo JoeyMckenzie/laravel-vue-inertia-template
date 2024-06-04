@@ -48,7 +48,7 @@ defineProps<{
             <template v-for="(item, index) in items">
                 <PaginationListItem
                     v-if="item.type === 'page'"
-                    :key="index"
+                    :key="item.value"
                     :value="item.value"
                     as-child
                 >
