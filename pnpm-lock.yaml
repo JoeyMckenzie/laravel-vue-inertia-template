@@ -24,8 +24,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       lucide-vue-next:
-        specifier: ^0.379.0
-        version: 0.379.0(vue@3.4.27(typescript@5.4.5))
+        specifier: ^0.383.0
+        version: 0.383.0(vue@3.4.27(typescript@5.4.5))
       radix-vue:
         specifier: ^1.8.2
         version: 1.8.3(vue@3.4.27(typescript@5.4.5))
@@ -1638,8 +1638,8 @@ packages:
     resolution: {integrity: sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==}
     engines: {node: 14 || >=16.14}
 
-  lucide-vue-next@0.379.0:
-    resolution: {integrity: sha512-N+dgaDucX55x6485Fmv3Oj3CZn4NS8/DMNAfLEVdkAt3UiuVUhCLmk79kqfuylHg3+Y7msps4f3FNiWawJVHOg==}
+  lucide-vue-next@0.383.0:
+    resolution: {integrity: sha512-paQmd2cHAye7Zl/lA0avZN2efZxFkMehfoori1BiHKX//KQG4DVuy00yl4YHVQ6h1B4EsR+QDRCpVUtwvKUBRw==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -3958,7 +3958,7 @@ snapshots:
 
   lru-cache@10.2.2: {}
 
-  lucide-vue-next@0.379.0(vue@3.4.27(typescript@5.4.5)):
+  lucide-vue-next@0.383.0(vue@3.4.27(typescript@5.4.5)):
     dependencies:
       vue: 3.4.27(typescript@5.4.5)
 
